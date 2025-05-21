@@ -12,6 +12,7 @@ import MyGroups from "./Pages/MyGroups.jsx";
 import UpdateGroup from "./Pages/UpdateGroup.jsx";
 import SignUp from "./Components/SignUp.jsx";
 import LogIn from "./Components/LogIn.jsx";
+import CreateGroup from "./Pages/CreateGroup.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/updategroup",
         Component: UpdateGroup,
+      },
+      {
+        path: "/creategroup",
+        Component: CreateGroup,
       },
     ],
   },

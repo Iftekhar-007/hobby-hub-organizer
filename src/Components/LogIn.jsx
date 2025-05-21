@@ -1,8 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { NavLink } from "react-router";
 
 const LogIn = () => {
+  useEffect(() => {
+    document.title = "Log In | HobbyHub";
+
+    const setFavicon = (url) => {
+      let link =
+        document.querySelector("link[rel*='icon']") ||
+        document.createElement("link");
+      link.type = "image/png";
+      link.rel = "icon";
+      link.href = url;
+      document.head.appendChild(link);
+    };
+
+    setFavicon("../../public/login.png");
+  }, []);
   const [showPassword, setShowPassword] = useState(false);
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -46,7 +61,7 @@ const LogIn = () => {
               <p>
                 Don't have any account yet ?{" "}
                 <NavLink to="/signup" className="text-red-500">
-                  Sign Up!
+                  Create Now!
                 </NavLink>
               </p>
             </form>

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
-const MyGroups = () => {
+const CreateGroup = () => {
   useEffect(() => {
-    document.title = "MyGroups | HobbyHub";
+    document.title = "Create Group | HobbyHub";
 
     const setFavicon = (url) => {
       let link =
@@ -14,13 +14,13 @@ const MyGroups = () => {
       document.head.appendChild(link);
     };
 
-    setFavicon("../../public/man.png");
+    setFavicon("../../public/diversity.png");
   }, []);
   return (
     <div>
-      <h1>MyGroups here</h1>
+      <h1>create group</h1>
     </div>
   );
 };
 
-export default MyGroups;
+export default CreateGroup;

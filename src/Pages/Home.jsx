@@ -15,7 +15,7 @@ const Home = () => {
       document.head.appendChild(link);
     };
 
-    setFavicon("../../public/icons8-home-100.png"); // Put this file in your public folder
+    setFavicon("../../public/icons8-home-100.png");
   }, []);
 
   // https://e1.pngegg.com/pngimages/630/550/png-clipart-metrostation-black-home-icon-thumbnail.png

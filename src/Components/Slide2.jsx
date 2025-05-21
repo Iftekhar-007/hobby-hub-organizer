@@ -21,7 +21,6 @@ const Slide2 = () => {
               beginner or <br /> an expert, there's a place for you to grow{" "}
               <br /> and thrive.
             </p>
-            <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
       </div>

@@ -20,7 +20,6 @@ const Slide3 = () => {
               <br />
               along for the journey. It's free, simple, and rewarding.
             </p>
-            <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
       </div>

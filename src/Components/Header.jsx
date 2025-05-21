@@ -34,6 +34,12 @@ const Header = () => {
               <li>
                 <NavLink to="/allgroups">All Groups</NavLink>
               </li>
+              <li>
+                <NavLink to="/mygroups">My groups</NavLink>
+              </li>
+              <li>
+                <NavLink to="/creategroup">Create Group</NavLink>
+              </li>
             </ul>
           </div>
           <NavLink to="/" className="text-2xl font-bold">
@@ -47,6 +53,12 @@ const Header = () => {
             </li>
             <li>
               <NavLink to="/allgroups">All Groups</NavLink>
+            </li>
+            <li>
+              <NavLink to="/mygroups">My groups</NavLink>
+            </li>
+            <li>
+              <NavLink to="/creategroup">Create Group</NavLink>
             </li>
           </ul>
         </div>
