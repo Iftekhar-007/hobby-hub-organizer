@@ -4,5 +4,5 @@ ul li a.active{
 
 .swiper {
   width:auto;
-  height: 300px;
+  height: fit-content;
 }
