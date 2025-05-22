@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Drawing & Painting",
+    "img": "https://i.postimg.cc/jjXbrmMq/pexels-cottonbro-3778179.jpg"
+  },
+  {
+    "name": "Photography",
+    "img": "photography.jpg"
+  },
+  {
+    "name": "Video Gaming",
+    "img": "video_gaming.jpg"
+  },
+  {
+    "name": "Reading",
+    "img": "reading.jpg"
+  }
+]

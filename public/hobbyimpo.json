@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Social Bonding & Connection",
+    "description": "Hobbies facilitate social bonding by connecting people with similar interests, fostering friendships and a sense of community. This combats loneliness and significantly reduces stress.",
+    "photo": "https://i.postimg.cc/wBHL7jPg/pexels-minan1398-853168.jpg"
+    
+  },
+  {
+    "name": "Stress Relief Through Creative Hobbies",
+    "description": "Engaging in creative hobbies provides effective stress relief. It allows for focused immersion, calming the mind and offering a welcome escape from daily anxieties and pressures.",
+    "photo":"https://i.postimg.cc/rwgxRkL4/pexels-anastasia-shuraeva-9501970.jpg"
+  },
+  {
+    "name": "Skill Development & Learning",
+    "description": "Hobbies offer continuous opportunities for skill development and learning new things. This boosts self-confidence, enriches personal growth, and broadens one's capabilities across various aspects of life.",
+    "photo":"https://i.postimg.cc/pdt4rKRr/pexels-cottonbro-4705635.jpg"
+  },
+  {
+    "name": "Builds Community Around Interests",
+    "description": "Hobbies naturally build communities around shared interests. These groups provide mutual support, inspiration, and a sense of belonging, making the pursuit of hobbies even more rewarding and enjoyable.",
+    "photo":"https://i.postimg.cc/nrvT6P91/pexels-green-odette-232224115-32197554.jpg"
+  }
+]
