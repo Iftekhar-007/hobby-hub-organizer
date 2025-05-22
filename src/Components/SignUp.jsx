@@ -24,12 +24,31 @@ const SignUp = () => {
     setFavicon("../../public/login.png");
   }, []);
 
-  const { userWithEmailAndPass } = use(AuthContext);
+  const { userWithEmailAndPass, logInWithGoogle } = use(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
 
   // console.log(email);
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
   const [passerror, setPassError] = useState(" ");
+  const handleLogInWithGoogle = () => {
+    logInWithGoogle()
+      .then((result) => {
+        Swal.fire({
+          title: "User Logged In Successfully!",
+          icon: "success",
+          draggable: true,
+          // navigate("/");
+        });
+        navigate(location.state?.from?.pathname || "/");
+      })
+      .then((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          // text: "Password must have at least 1 uppercase, 1 lowercase letter, and be at least 6 characters long!",
+        });
+      });
+  };
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -67,6 +86,26 @@ const SignUp = () => {
         console.log(error.message);
       });
   };
+
+  // const handleLogInWithGoogle = () => {
+  //   logInWithGoogle()
+  //     .then((result) => {
+  //       Swal.fire({
+  //         title: "User Logged In Successfully!",
+  //         icon: "success",
+  //         draggable: true,
+  //         // navigate("/");
+  //       });
+  //       navigate(location.state?.from?.pathname || "/");
+  //     })
+  //     .then((error) => {
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: "Oops...",
+  //         // text: "Password must have at least 1 uppercase, 1 lowercase letter, and be at least 6 characters long!",
+  //       });
+  //     });
+  // };
 
   return (
     <div className="card-body w-96 mx-auto mt-32 shadow">
@@ -115,9 +154,15 @@ const SignUp = () => {
             Log In
           </Link>
         </p>
-        <button className="btn">Sign up with google</button>
+        {/* <button onClick={handleLogInWithGoogle} className="btn">
+          Sign up with google
+        </button> */}
         {passerror && <p className="text-red-500">{passerror}</p>}
       </form>
+
+      <button onClick={handleLogInWithGoogle} className="btn">
+        Sign up with google
+      </button>
     </div>
   );
 };

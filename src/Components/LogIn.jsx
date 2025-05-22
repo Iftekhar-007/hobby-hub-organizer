@@ -6,9 +6,11 @@ import Swal from "sweetalert2";
 import { ToastContainer } from "react-toastify";
 
 const LogIn = () => {
-  const { logInUserWithEmailAndPass } = use(AuthContext);
+  const { logInUserWithEmailAndPass, passReset, logInWithGoogle } =
+    use(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [email, setEmail] = useState(" ");
   useEffect(() => {
     document.title = "Log In | HobbyHub";
 
@@ -47,6 +49,42 @@ const LogIn = () => {
         console.log(error.message);
       });
   };
+
+  const handleReset = () => {
+    passReset(email)
+      .then(() => {
+        Swal.fire({
+          text: "We sent a password reset email to your email",
+        });
+      })
+      .then((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${error.message}`,
+        });
+      });
+  };
+
+  const handleLogInWithGoogle = () => {
+    logInWithGoogle()
+      .then((result) => {
+        Swal.fire({
+          title: "User Logged In Successfully!",
+          icon: "success",
+          draggable: true,
+          // navigate("/");
+        });
+        navigate(location.state?.from?.pathname || "/");
+      })
+      .then((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          // text: "Password must have at least 1 uppercase, 1 lowercase letter, and be at least 6 characters long!",
+        });
+      });
+  };
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -63,6 +101,8 @@ const LogIn = () => {
                 name="email"
                 className="input"
                 placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <label className="label">Password</label>
@@ -82,7 +122,9 @@ const LogIn = () => {
                 </span>
 
                 <button>
-                  <a className="link link-hover">Forgot password?</a>
+                  <a onClick={handleReset} className="link link-hover">
+                    Forgot password?
+                  </a>
                 </button>
               </div>
               <button className="btn btn-neutral mt-4">Login</button>
@@ -92,8 +134,10 @@ const LogIn = () => {
                   Create Now!
                 </NavLink>
               </p>
-              <button className="btn">Sign up with google</button>
             </form>
+            <button onClick={handleLogInWithGoogle} className="btn">
+              Sign up with google
+            </button>
           </div>
         </div>
       </div>

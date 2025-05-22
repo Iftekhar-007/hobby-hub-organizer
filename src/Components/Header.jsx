@@ -9,10 +9,9 @@ const Header = () => {
 
   const handleLogOut = () => {
     logOutUser()
-      .then(() => {
-        notify();
-      })
+      .then(() => {})
       .catch((error) => console.log(error.message));
+    notify();
   };
   const notify = () => toast("user logged out");
 
