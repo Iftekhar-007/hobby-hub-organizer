@@ -1,8 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { NavLink } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../Context/AuthContext";
+import Swal from "sweetalert2";
+import { ToastContainer } from "react-toastify";
 
 const LogIn = () => {
+  const { logInUserWithEmailAndPass } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
   useEffect(() => {
     document.title = "Log In | HobbyHub";
 
@@ -23,6 +29,23 @@ const LogIn = () => {
   const handleLogInUser = (e) => {
     e.preventDefault();
     const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    logInUserWithEmailAndPass(email, password)
+      .then((result) => {
+        const user = result.user;
+        Swal.fire({
+          title: "User Logged In Successfully!",
+          icon: "success",
+          draggable: true,
+          // navigate("/");
+        });
+        navigate(location.state?.from?.pathname || "/");
+      })
+      .then((error) => {
+        console.log(error.message);
+      });
   };
   return (
     <div className="hero bg-base-200 min-h-screen">

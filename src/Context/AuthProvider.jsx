@@ -10,15 +10,19 @@ import { auth } from "../firebase/firebase.config";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const userWithEmailAndPass = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const logInUserWithEmailAndPass = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const logOutUser = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
@@ -26,6 +30,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("get user by effect", currentUser);
       setUser(currentUser);
+      setLoading(false);
     });
     return () => {
       unSubscribe();
@@ -33,6 +38,7 @@ const AuthProvider = ({ children }) => {
   }, []);
   const userInfo = {
     user,
+    loading,
     userWithEmailAndPass,
     logInUserWithEmailAndPass,
     logOutUser,

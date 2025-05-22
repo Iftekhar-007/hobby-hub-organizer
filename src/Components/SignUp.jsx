@@ -1,12 +1,13 @@
 import React, { use, useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import Swal from "sweetalert2";
 // import { AuthContext } from "../Context/AuthContext";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   useEffect(() => {
     document.title = "Log In | HobbyHub";
 
@@ -59,7 +60,7 @@ const SignUp = () => {
           draggable: true,
           // navigate("/");
         });
-        navigate("/");
+        navigate(location.state?.from?.pathname || "/");
         // console.log(user);
       })
       .then((error) => {

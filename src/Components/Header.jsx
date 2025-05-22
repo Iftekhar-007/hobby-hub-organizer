@@ -1,14 +1,20 @@
 import React, { use } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
+import { toast, ToastContainer } from "react-toastify";
 
 const Header = () => {
   const { user, logOutUser } = use(AuthContext);
   console.log(user);
 
   const handleLogOut = () => {
-    logOutUser();
+    logOutUser()
+      .then(() => {
+        notify();
+      })
+      .catch((error) => console.log(error.message));
   };
+  const notify = () => toast("user logged out");
 
   return (
     <div className="bg-base-100 shadow-sm">
@@ -74,6 +80,7 @@ const Header = () => {
           {user ? (
             <button onClick={handleLogOut} className="btn">
               Log Out
+              <ToastContainer></ToastContainer>
             </button>
           ) : (
             <NavLink to="/login" className="btn">
