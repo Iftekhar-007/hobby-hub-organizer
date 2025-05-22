@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 const CreateGroup = () => {
   useEffect(() => {
-    document.title = "Create Group | HobbyHub";
+    // document.title = "Create Group | HobbyHub";
 
     const setFavicon = (url) => {
       let link =
@@ -17,9 +17,12 @@ const CreateGroup = () => {
     setFavicon("../../public/diversity.png");
   }, []);
   return (
-    <div>
-      <h1>create group</h1>
-    </div>
+    <>
+      <title>Create Group | HobbyHub</title>
+      <div>
+        <h1>create group</h1>
+      </div>
+    </>
   );
 };
 

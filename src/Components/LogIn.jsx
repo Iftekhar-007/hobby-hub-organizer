@@ -12,7 +12,7 @@ const LogIn = () => {
   const location = useLocation();
   const [email, setEmail] = useState(" ");
   useEffect(() => {
-    document.title = "Log In | HobbyHub";
+    // document.title = "Log In | HobbyHub";
 
     const setFavicon = (url) => {
       let link =
@@ -86,62 +86,65 @@ const LogIn = () => {
       });
   };
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left"></div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <div className="card-body">
-            <h1 className="lg:text-4xl text-2xl md:text-3xl font-bold">
-              Login now!
-            </h1>
-            <form onSubmit={handleLogInUser} className="fieldset">
-              <label className="label">Email</label>
-              <input
-                type="email"
-                name="email"
-                className="input"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <label className="label">Password</label>
-              <div className="relative">
+    <>
+      <title>log in | HobbyHub</title>
+      <div className="hero bg-base-200 min-h-screen">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <div className="text-center lg:text-left"></div>
+          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+            <div className="card-body">
+              <h1 className="lg:text-4xl text-2xl md:text-3xl font-bold">
+                Login now!
+              </h1>
+              <form onSubmit={handleLogInUser} className="fieldset">
+                <label className="label">Email</label>
                 <input
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  className="input w-full pr-10"
-                  placeholder="Password"
+                  type="email"
+                  name="email"
+                  className="input"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
-                <span
-                  className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm text-gray-600"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </span>
+                <label className="label">Password</label>
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    className="input w-full pr-10"
+                    placeholder="Password"
+                    required
+                  />
+                  <span
+                    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm text-gray-600"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </span>
 
-                <button>
-                  <a onClick={handleReset} className="link link-hover">
-                    Forgot password?
-                  </a>
-                </button>
-              </div>
-              <button className="btn btn-neutral mt-4">Login</button>
-              <p>
-                Don't have any account yet ?{" "}
-                <NavLink to="/signup" className="text-red-500">
-                  Create Now!
-                </NavLink>
-              </p>
-            </form>
-            <button onClick={handleLogInWithGoogle} className="btn">
-              Sign up with google
-            </button>
+                  <button>
+                    <a onClick={handleReset} className="link link-hover">
+                      Forgot password?
+                    </a>
+                  </button>
+                </div>
+                <button className="btn btn-neutral mt-4">Login</button>
+                <p>
+                  Don't have any account yet ?{" "}
+                  <NavLink to="/signup" className="text-red-500">
+                    Create Now!
+                  </NavLink>
+                </p>
+              </form>
+              <button onClick={handleLogInWithGoogle} className="btn">
+                Sign up with google
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
