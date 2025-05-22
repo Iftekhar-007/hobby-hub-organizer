@@ -77,7 +77,7 @@ const LogIn = () => {
         });
         navigate(location.state?.from?.pathname || "/");
       })
-      .then((error) => {
+      .catch((error) => {
         Swal.fire({
           icon: "error",
           title: "Oops...",

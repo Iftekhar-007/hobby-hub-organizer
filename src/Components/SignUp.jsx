@@ -24,7 +24,8 @@ const SignUp = () => {
     setFavicon("../../public/login.png");
   }, []);
 
-  const { userWithEmailAndPass, logInWithGoogle } = use(AuthContext);
+  const { userWithEmailAndPass, logInWithGoogle, updateUser, setUser } =
+    use(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
 
   // console.log(email);
@@ -32,7 +33,7 @@ const SignUp = () => {
   const [passerror, setPassError] = useState(" ");
   const handleLogInWithGoogle = () => {
     logInWithGoogle()
-      .then((result) => {
+      .then(() => {
         Swal.fire({
           title: "User Logged In Successfully!",
           icon: "success",
@@ -41,7 +42,7 @@ const SignUp = () => {
         });
         navigate(location.state?.from?.pathname || "/");
       })
-      .then((error) => {
+      .catch((error) => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -56,7 +57,9 @@ const SignUp = () => {
     const formData = new FormData(form);
     const email = formData.get("email");
     const password = formData.get("password");
-    // console.log(email, password);
+    const name = formData.get("name");
+    const photo = formData.get("photo");
+    console.log(email, password, name, photo);
 
     if (!passwordRegex.test(password)) {
       setPassError(
@@ -79,6 +82,13 @@ const SignUp = () => {
           draggable: true,
           // navigate("/");
         });
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
         navigate(location.state?.from?.pathname || "/");
         // console.log(user);
       })
@@ -154,9 +164,7 @@ const SignUp = () => {
             Log In
           </Link>
         </p>
-        {/* <button onClick={handleLogInWithGoogle} className="btn">
-          Sign up with google
-        </button> */}
+
         {passerror && <p className="text-red-500">{passerror}</p>}
       </form>
 
