@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import { toast } from "react-toastify";
+import { Tooltip } from "react-tooltip";
 
 const Header = () => {
   const { user, logOutUser } = use(AuthContext);
@@ -82,8 +83,12 @@ const Header = () => {
                 className="w-[40px] rounded-[50%] mr-3"
                 src={user.photoURL}
                 alt=""
-                title={user.displayName}
+                // title={user.displayName}
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={user.displayName}
+                data-tooltip-place="bottom"
               />
+              <Tooltip id="my-tooltip" effects="solid" className="!z-[9999]" />
 
               <button onClick={handleLogOut} className="btn">
                 Log Out
