@@ -19,6 +19,11 @@ const LogIn = () => {
     setFavicon("../../public/login.png");
   }, []);
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleLogInUser = (e) => {
+    e.preventDefault();
+    const form = e.target;
+  };
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -28,7 +33,7 @@ const LogIn = () => {
             <h1 className="lg:text-4xl text-2xl md:text-3xl font-bold">
               Login now!
             </h1>
-            <form className="fieldset">
+            <form onSubmit={handleLogInUser} className="fieldset">
               <label className="label">Email</label>
               <input
                 type="email"
@@ -64,6 +69,7 @@ const LogIn = () => {
                   Create Now!
                 </NavLink>
               </p>
+              <button className="btn">Sign up with google</button>
             </form>
           </div>
         </div>

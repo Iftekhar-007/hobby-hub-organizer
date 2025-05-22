@@ -1,11 +1,12 @@
 import React, { use, useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import Swal from "sweetalert2";
 // import { AuthContext } from "../Context/AuthContext";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "Log In | HobbyHub";
 
@@ -35,7 +36,7 @@ const SignUp = () => {
     const formData = new FormData(form);
     const email = formData.get("email");
     const password = formData.get("password");
-    console.log(email, password);
+    // console.log(email, password);
 
     if (!passwordRegex.test(password)) {
       setPassError(
@@ -49,15 +50,21 @@ const SignUp = () => {
       return;
     }
 
-    userWithEmailAndPass(email, password).then((result) => {
-      const user = result.user;
-      Swal.fire({
-        title: "User Logged In Successfully!",
-        icon: "success",
-        draggable: true,
+    userWithEmailAndPass(email, password)
+      .then((result) => {
+        const user = result.user;
+        Swal.fire({
+          title: "User Logged In Successfully!",
+          icon: "success",
+          draggable: true,
+          // navigate("/");
+        });
+        navigate("/");
+        // console.log(user);
+      })
+      .then((error) => {
+        console.log(error.message);
       });
-      console.log(user);
-    });
   };
 
   return (

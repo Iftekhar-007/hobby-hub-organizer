@@ -14,6 +14,7 @@ import SignUp from "./Components/SignUp.jsx";
 import LogIn from "./Components/LogIn.jsx";
 import CreateGroup from "./Pages/CreateGroup.jsx";
 import AuthProvider from "./Context/AuthProvider.jsx";
+import PrivateRoutes from "./PrivateRoutes/PrivateRoutes.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,15 +31,30 @@ const router = createBrowserRouter([
       },
       {
         path: "/mygroups",
-        Component: MyGroups,
+        // Component: MyGroups,
+        element: (
+          <PrivateRoutes>
+            <MyGroups></MyGroups>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/updategroup",
-        Component: UpdateGroup,
+        // Component: UpdateGroup,
+        element: (
+          <PrivateRoutes>
+            <UpdateGroup></UpdateGroup>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/creategroup",
-        Component: CreateGroup,
+        // Component: CreateGroup,
+        element: (
+          <PrivateRoutes>
+            <CreateGroup></CreateGroup>
+          </PrivateRoutes>
+        ),
       },
     ],
   },
