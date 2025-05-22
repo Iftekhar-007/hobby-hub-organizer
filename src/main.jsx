@@ -13,6 +13,7 @@ import UpdateGroup from "./Pages/UpdateGroup.jsx";
 import SignUp from "./Components/SignUp.jsx";
 import LogIn from "./Components/LogIn.jsx";
 import CreateGroup from "./Pages/CreateGroup.jsx";
+import AuthProvider from "./Context/AuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );

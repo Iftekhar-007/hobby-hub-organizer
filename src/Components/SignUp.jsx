@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router";
+import { AuthContext } from "../Context/AuthContext";
+import Swal from "sweetalert2";
+// import { AuthContext } from "../Context/AuthContext";
 
 const SignUp = () => {
   useEffect(() => {
@@ -18,13 +21,51 @@ const SignUp = () => {
 
     setFavicon("../../public/login.png");
   }, []);
+
+  const { userWithEmailAndPass } = use(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+
+  // console.log(email);
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+  const [passerror, setPassError] = useState(" ");
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const email = formData.get("email");
+    const password = formData.get("password");
+    console.log(email, password);
+
+    if (!passwordRegex.test(password)) {
+      setPassError(
+        "Password must have at least 1 uppercase, 1 lowercase letter, and be at least 6 characters long."
+      );
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password must have at least 1 uppercase, 1 lowercase letter, and be at least 6 characters long!",
+      });
+      return;
+    }
+
+    userWithEmailAndPass(email, password).then((result) => {
+      const user = result.user;
+      Swal.fire({
+        title: "User Logged In Successfully!",
+        icon: "success",
+        draggable: true,
+      });
+      console.log(user);
+    });
+  };
+
   return (
     <div className="card-body w-96 mx-auto mt-32 shadow">
       <h2 className="lg:text-4xl md:text-3xl text-2xl font-bold text-center">
         Sign Up !
       </h2>
-      <form className="fieldset">
+      <form onSubmit={handleSignUp} className="fieldset">
         <label className="label">Name</label>
         <input type="text" name="name" className="input" placeholder="name" />
 
@@ -67,6 +108,7 @@ const SignUp = () => {
           </Link>
         </p>
         <button className="btn">Sign up with google</button>
+        {passerror && <p className="text-red-500">{passerror}</p>}
       </form>
     </div>
   );
