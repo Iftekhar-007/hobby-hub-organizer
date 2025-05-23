@@ -34,6 +34,7 @@ const SignUp = () => {
   const handleLogInWithGoogle = () => {
     logInWithGoogle()
       .then(() => {
+        // console.log(result.user);
         Swal.fire({
           title: "User Logged In Successfully!",
           icon: "success",
@@ -55,11 +56,13 @@ const SignUp = () => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
+    const { password, ...userProfile } = Object.fromEntries(formData.entries());
     const email = formData.get("email");
-    const password = formData.get("password");
+    // const password = formData.get("password");
     const name = formData.get("name");
     const photo = formData.get("photo");
-    console.log(email, password, name, photo);
+
+    console.log(email, password, name, photo, userProfile);
 
     if (!passwordRegex.test(password)) {
       setPassError(
@@ -76,18 +79,50 @@ const SignUp = () => {
     userWithEmailAndPass(email, password)
       .then((result) => {
         const user = result.user;
-        Swal.fire({
-          title: "User Logged In Successfully!",
-          icon: "success",
-          draggable: true,
-          // navigate("/");
-        });
+        console.log(user);
+        // Swal.fire({
+        //   title: "User Logged In Successfully!",
+        //   icon: "success",
+        //   draggable: true,
+        //   // navigate("/");
+        // });
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photo });
           })
           .catch((error) => {
             console.log(error.message);
+          });
+
+        const newUser = { ...userProfile, uid: user.uid };
+        console.log(newUser);
+
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              Swal.fire({
+                title: "User Created Successfully!",
+                icon: "success",
+                draggable: true,
+                // navigate("/");
+              });
+            } else {
+              Swal.fire({
+                title: "oops something went wrong",
+                // icon: "success",
+                draggable: true,
+                // navigate("/");
+              });
+            }
+
+            console.log("after added data in db", data);
           });
         navigate(location.state?.from?.pathname || "/");
         // console.log(user);

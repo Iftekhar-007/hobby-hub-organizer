@@ -50,11 +50,7 @@ const router = createBrowserRouter([
       {
         path: "/creategroup",
         // Component: CreateGroup,
-        element: (
-          <PrivateRoutes>
-            <CreateGroup></CreateGroup>
-          </PrivateRoutes>
-        ),
+        element: <CreateGroup></CreateGroup>,
       },
     ],
   },
