@@ -1,5 +1,6 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
+import Swal from "sweetalert2";
 
 const CreateGroup = () => {
   const { user } = use(AuthContext);
@@ -38,7 +39,16 @@ const CreateGroup = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Group Created Successfully!",
+            icon: "success",
+            draggable: true,
+            // navigate("/");
+          });
+        }
         console.log("after added to db", data);
+        form.reset();
       });
   };
 

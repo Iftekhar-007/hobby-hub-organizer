@@ -33,22 +33,47 @@ const SignUp = () => {
   const [passerror, setPassError] = useState(" ");
   const handleLogInWithGoogle = () => {
     logInWithGoogle()
-      .then(() => {
-        // console.log(result.user);
-        Swal.fire({
-          title: "User Logged In Successfully!",
-          icon: "success",
-          draggable: true,
-          // navigate("/");
-        });
-        navigate(location.state?.from?.pathname || "/");
+      .then((result) => {
+        const user = result.user;
+        const newUser = {
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+          uid: user.uid,
+        };
+
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              Swal.fire({
+                title: "User Created Successfully!",
+                icon: "success",
+              });
+            } else {
+              Swal.fire({
+                title: "Welcome back!",
+                text: "Logged in successfully.",
+                icon: "success",
+              });
+            }
+
+            navigate(location.state?.from?.pathname || "/");
+          });
       })
       .catch((error) => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          // text: "Password must have at least 1 uppercase, 1 lowercase letter, and be at least 6 characters long!",
+          text: "Something went wrong with Google login!",
         });
+        console.error("Google login error:", error);
       });
   };
 
