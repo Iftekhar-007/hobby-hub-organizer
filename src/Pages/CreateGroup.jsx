@@ -21,6 +21,27 @@ const CreateGroup = () => {
     setFavicon("../../public/diversity.png");
   }, []);
 
+  const handleCreateGroup = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const groupData = Object.fromEntries(formData.entries());
+    console.log(groupData);
+
+    fetch(`http://localhost:5000/groups`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(groupData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("after added to db", data);
+      });
+  };
+
   const categories = [
     "Drawing & Painting",
     "Photography",
@@ -37,13 +58,14 @@ const CreateGroup = () => {
       <div>
         <h1 className="text-center text-7xl font-bold my-10">Create Group</h1>
 
-        <form action="">
+        <form onSubmit={handleCreateGroup}>
           <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-[1440px] mx-auto border p-4 mb-20">
-            <label className="label">Title</label>
+            <label className="label">Group Title</label>
             <input
               type="text"
               className="input w-full"
-              placeholder="My awesome page"
+              placeholder="Group Name"
+              name="title"
             />
 
             <label className="label">Category</label>
@@ -71,13 +93,18 @@ const CreateGroup = () => {
             <input type="hidden" name="category" value={selectedCategory} />
 
             <label className="label">Description</label>
-            <textarea className="textarea w-full" placeholder="Bio"></textarea>
+            <textarea
+              name="description"
+              className="textarea w-full"
+              placeholder="Bio"
+            ></textarea>
 
             <label className="label">Meeting Location</label>
             <input
               type="text"
               className="input w-full"
               placeholder="Meeting Location"
+              name="location"
             />
 
             <label className="label">Max Members</label>
@@ -85,32 +112,41 @@ const CreateGroup = () => {
               type="number"
               className="input w-full"
               placeholder="Max Members"
+              name="max_members"
             />
 
             <label className="label">Start Date</label>
-            <input type="date" className="input w-full" placeholder="Date" />
+            <input
+              type="date"
+              className="input w-full"
+              name="date"
+              placeholder="Date"
+            />
 
             <label className="label">Image URL</label>
             <input
               type="text"
               className="input w-full"
               placeholder="Image URL"
+              name="photo"
             />
 
             <label className="label">User Name</label>
             <input
               type="text"
-              value={user?.displayName}
+              defaultValue={user?.displayName}
               className="input w-full"
               placeholder="Name"
+              name="name"
             />
 
             <label className="label">User Email</label>
             <input
               type="email"
-              value={user?.email}
+              defaultValue={user?.email}
               className="input w-full"
               placeholder="email"
+              name="email"
             />
 
             <button className="btn w-full mt-5">Create Group</button>
