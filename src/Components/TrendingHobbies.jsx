@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import Hobby from "./Hobby";
 
-const fetchPromise = fetch(`trendHobby.json`).then((res) => res.json());
+const fetchPromise = fetch(`/trendHobby.json`).then((res) => res.json());
 
 const TrendingHobbies = () => {
   const hobbies = use(fetchPromise);
@@ -11,7 +11,7 @@ const TrendingHobbies = () => {
         Explore Trending Hobbies
       </h1>
       <div className="w-[1440px] mx-auto mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {hobbies.map((hobby, index) => (
+        {hobbies?.map((hobby, index) => (
           <Hobby key={index} hobby={hobby}></Hobby>
         ))}
       </div>

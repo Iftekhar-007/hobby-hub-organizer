@@ -11,7 +11,7 @@ const HobbyImpoCards = () => {
         Why Hobby Groups Matter
       </h1>
       <div className=" w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {hobbyImpos.map((hobby) => (
+        {hobbyImpos?.map((hobby) => (
           <HobbyCard hobby={hobby}></HobbyCard>
         ))}
       </div>

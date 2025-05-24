@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sliders from "../Components/Sliders";
 import HobbyImpoCards from "../Components/HobbyImpoCards";
 import TrendingHobbies from "../Components/TrendingHobbies";
+import Featured from "../Components/Featured";
 
 const Home = () => {
   const [theme, setTheme] = useState("light");
@@ -42,6 +43,7 @@ const Home = () => {
       </div>
 
       <Sliders />
+      <Featured></Featured>
       <HobbyImpoCards></HobbyImpoCards>
       <TrendingHobbies></TrendingHobbies>
     </div>
