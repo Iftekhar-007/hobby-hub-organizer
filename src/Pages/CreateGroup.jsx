@@ -19,7 +19,7 @@ const CreateGroup = () => {
       document.head.appendChild(link);
     };
 
-    setFavicon("../../public/diversity.png");
+    setFavicon("/diversity.png");
   }, []);
 
   const handleCreateGroup = (e) => {

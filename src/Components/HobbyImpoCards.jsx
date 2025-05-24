@@ -1,9 +1,7 @@
 import React, { use } from "react";
 import HobbyCard from "./HobbyCard";
 
-const fecthPromise = fetch("../../public/hobbyimpo.json").then((res) =>
-  res.json()
-);
+const fecthPromise = fetch("/hobbyimpo.json").then((res) => res.json());
 
 const HobbyImpoCards = () => {
   const hobbyImpos = use(fecthPromise);
