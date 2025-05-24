@@ -41,7 +41,14 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/mygroups",
+        path: "/mygroups/:email",
+
+        loader: async ({ params }) => {
+          const res = await fetch(
+            `http://localhost:5000/groups-by-email?email=${params.email}`
+          );
+          return res.json();
+        },
         // Component: MyGroups,
         element: (
           <PrivateRoutes>

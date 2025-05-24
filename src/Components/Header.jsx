@@ -69,7 +69,7 @@ const Header = () => {
               <NavLink to="/allgroups">All Groups</NavLink>
             </li>
             <li>
-              <NavLink to="/mygroups">My groups</NavLink>
+              <NavLink to={`/mygroups/${user?.email}`}>My groups</NavLink>
             </li>
             <li>
               <NavLink to="/creategroup">Create Group</NavLink>
