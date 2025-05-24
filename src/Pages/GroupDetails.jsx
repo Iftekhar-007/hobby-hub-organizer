@@ -49,7 +49,7 @@ const GroupDetails = () => {
   };
   return (
     <>
-      <title>{groupData.title} | Hobby HUb</title>
+      <title>Group Details | Hobby HUb</title>
       <div className="w-[1440px] mx-auto my-20">
         <div>
           <img className="mb-5" src={groupData.photo} alt="" />

@@ -114,12 +114,13 @@ const MyGroups = () => {
                     >
                       View
                     </Link>
-                    <button
-                      onClick={() => handleUpdate(group._id)}
+                    <Link
+                      to={`/updategroup/${group._id}`}
+                      // onClick={() => handleUpdate(group._id)}
                       className="bg-yellow-500 text-white px-3 py-1 rounded btn"
                     >
                       Update
-                    </button>
+                    </Link>
                     <button
                       onClick={() => handleDelete(group._id)}
                       className=" btn bg-red-500 text-white px-3 py-1 rounded"

@@ -1,11 +1,61 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
+import Swal from "sweetalert2";
 
 const UpdateGroup = () => {
   const { user } = use(AuthContext);
   const [selectedCategory, setSelectedCategory] = useState("");
   const groupData = useLoaderData();
+
+  useEffect(() => {
+    if (groupData?.category) {
+      setSelectedCategory(groupData.category);
+    }
+  }, [groupData]);
+
+  useEffect(() => {
+    document.title = "UpDate Group | HobbyHub";
+
+    const setFavicon = (url) => {
+      let link =
+        document.querySelector("link[rel*='icon']") ||
+        document.createElement("link");
+      link.type = "image/png";
+      link.rel = "icon";
+      link.href = url;
+      document.head.appendChild(link);
+    };
+    setFavicon("/group.png");
+  }, []);
+
+  const handleUpdateGroup = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const upDatedGroup = Object.fromEntries(formData.entries());
+    console.log(upDatedGroup);
+
+    fetch(`http://localhost:5000/groups/${groupData._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(upDatedGroup),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "group has been updated",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
 
   const categories = [
     "Drawing & Painting",
@@ -19,7 +69,7 @@ const UpdateGroup = () => {
   ];
   return (
     <div>
-      <h1 className="text-center text-7xl font-bold my-10">Create Group</h1>
+      <h1 className="text-center text-7xl font-bold my-10">Update Group</h1>
 
       <form onSubmit={handleUpdateGroup}>
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-[1440px] mx-auto border p-4 mb-20">
@@ -29,6 +79,7 @@ const UpdateGroup = () => {
             className="input w-full"
             placeholder="Group Name"
             name="title"
+            defaultValue={groupData.title}
           />
 
           <label className="label">Category</label>
@@ -53,13 +104,18 @@ const UpdateGroup = () => {
             </ul>
           </div>
 
-          <input type="hidden" name="category" value={selectedCategory} />
+          <input
+            type="hidden"
+            defaultValue={groupData.category}
+            name="category"
+          />
 
           <label className="label">Description</label>
           <textarea
             name="description"
             className="textarea w-full"
             placeholder="Bio"
+            defaultValue={groupData.description}
           ></textarea>
 
           <label className="label">Meeting Location</label>
@@ -68,6 +124,7 @@ const UpdateGroup = () => {
             className="input w-full"
             placeholder="Meeting Location"
             name="location"
+            defaultValue={groupData.location}
           />
 
           <label className="label">Max Members</label>
@@ -76,6 +133,7 @@ const UpdateGroup = () => {
             className="input w-full"
             placeholder="Max Members"
             name="max_members"
+            defaultValue={groupData.max_members}
           />
 
           <label className="label">Start Date</label>
@@ -84,6 +142,7 @@ const UpdateGroup = () => {
             className="input w-full"
             name="date"
             placeholder="Date"
+            defaultValue={groupData.date}
           />
 
           <label className="label">Image URL</label>
@@ -92,6 +151,7 @@ const UpdateGroup = () => {
             className="input w-full"
             placeholder="Image URL"
             name="photo"
+            defaultValue={groupData.photo}
           />
 
           <label className="label">User Name</label>
