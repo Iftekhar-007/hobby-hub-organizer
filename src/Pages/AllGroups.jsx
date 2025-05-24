@@ -1,6 +1,12 @@
-import React, { useEffect } from "react";
+import React, { use, useEffect } from "react";
+import Group from "./Group";
+
+const fetchPromise = fetch(`http://localhost:5000/groups`).then((res) =>
+  res.json()
+);
 
 const AllGroups = () => {
+  const allGroups = use(fetchPromise);
   useEffect(() => {
     document.title = "All Groups | HobbyHub";
 
@@ -17,8 +23,12 @@ const AllGroups = () => {
     setFavicon("../../public/ancestors.png"); // Put this file in your public folder
   }, []);
   return (
-    <div>
-      <h1>all groups here</h1>
+    <div className="w-[1440px] mx-auto">
+      <h1 className="text-center text-5xl my-20 font-bold">All Groups Here</h1>
+
+      {allGroups.map((group, index) => (
+        <Group key={index} group={group}></Group>
+      ))}
     </div>
   );
 };

@@ -15,6 +15,7 @@ import LogIn from "./Components/LogIn.jsx";
 import CreateGroup from "./Pages/CreateGroup.jsx";
 import AuthProvider from "./Context/AuthProvider.jsx";
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes.jsx";
+import GroupDetails from "./Pages/GroupDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,16 @@ const router = createBrowserRouter([
       {
         path: "/allgroups",
         Component: AllGroups,
+      },
+      {
+        path: "/allgroups/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/groups/${params.id}`),
+        element: (
+          <PrivateRoutes>
+            <GroupDetails></GroupDetails>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/mygroups",
