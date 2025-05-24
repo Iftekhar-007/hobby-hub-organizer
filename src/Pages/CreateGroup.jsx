@@ -30,7 +30,7 @@ const CreateGroup = () => {
     const groupData = Object.fromEntries(formData.entries());
     console.log(groupData);
 
-    fetch(`http://localhost:5000/groups`, {
+    fetch(`https://hobby-hub-server-lilac.vercel.app/groups`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

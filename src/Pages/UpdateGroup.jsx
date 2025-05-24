@@ -36,7 +36,7 @@ const UpdateGroup = () => {
     const upDatedGroup = Object.fromEntries(formData.entries());
     console.log(upDatedGroup);
 
-    fetch(`http://localhost:5000/groups/${groupData._id}`, {
+    fetch(`https://hobby-hub-server-lilac.vercel.app/groups/${groupData._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

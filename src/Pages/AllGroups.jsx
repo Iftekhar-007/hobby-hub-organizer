@@ -1,9 +1,9 @@
 import React, { use, useEffect } from "react";
 import Group from "./Group";
 
-const fetchPromise = fetch(`http://localhost:5000/groups`).then((res) =>
-  res.json()
-);
+const fetchPromise = fetch(
+  `https://hobby-hub-server-lilac.vercel.app/groups`
+).then((res) => res.json());
 
 const AllGroups = () => {
   const allGroups = use(fetchPromise);

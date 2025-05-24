@@ -42,7 +42,7 @@ const SignUp = () => {
           uid: user.uid,
         };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://hobby-hub-server-lilac.vercel.app/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -122,7 +122,7 @@ const SignUp = () => {
         const newUser = { ...userProfile, uid: user.uid };
         console.log(newUser);
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://hobby-hub-server-lilac.vercel.app/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

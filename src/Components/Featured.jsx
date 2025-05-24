@@ -5,7 +5,7 @@ const Featured = () => {
   const [featuredGrp, setFeaturedGrp] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/groups`)
+    fetch(`https://hobby-hub-server-lilac.vercel.app/groups`)
       .then((res) => res.json())
       .then((data) => {
         setFeaturedGrp(data);

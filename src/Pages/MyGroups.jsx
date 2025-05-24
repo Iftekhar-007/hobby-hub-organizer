@@ -38,9 +38,12 @@ const MyGroups = () => {
     }).then((result) => {
       console.log(result.isConfirmed);
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/groups-by-email/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://hobby-hub-server-lilac.vercel.app/groups-by-email/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount) {

@@ -33,7 +33,9 @@ const router = createBrowserRouter([
       {
         path: "/allgroups/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/groups/${params.id}`),
+          fetch(
+            `https://hobby-hub-server-lilac.vercel.app/groups/${params.id}`
+          ),
         element: (
           <PrivateRoutes>
             <GroupDetails></GroupDetails>
@@ -45,7 +47,7 @@ const router = createBrowserRouter([
 
         loader: async ({ params }) => {
           const res = await fetch(
-            `http://localhost:5000/groups-by-email?email=${params.email}`
+            `https://hobby-hub-server-lilac.vercel.app/groups-by-email?email=${params.email}`
           );
           return res.json();
         },
@@ -60,7 +62,9 @@ const router = createBrowserRouter([
         path: "/updategroup/:id",
 
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/groups/${params.id}`),
+          fetch(
+            `https://hobby-hub-server-lilac.vercel.app/groups/${params.id}`
+          ),
         // Component: UpdateGroup,
         element: (
           <PrivateRoutes>
