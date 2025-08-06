@@ -25,7 +25,7 @@ const MyGroups = () => {
   }, []);
 
   const handleDelete = (id) => {
-    console.log(id);
+    // console.log(id);
 
     Swal.fire({
       title: "Are you sure?",
@@ -36,7 +36,7 @@ const MyGroups = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      console.log(result.isConfirmed);
+      // console.log(result.isConfirmed);
       if (result.isConfirmed) {
         fetch(
           `https://hobby-hub-server-lilac.vercel.app/groups-by-email/${id}`,
@@ -56,9 +56,9 @@ const MyGroups = () => {
                 (group) => group._id !== id
               );
               setGroups(remainningCoffee);
-              console.log(result);
+              // console.log(result);
             }
-            console.log("after delete", data);
+            // console.log("after delete", data);
           });
         // Swal.fire({
         //   title: "Deleted!",

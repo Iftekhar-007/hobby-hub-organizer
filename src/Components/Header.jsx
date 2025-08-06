@@ -6,14 +6,13 @@ import { Tooltip } from "react-tooltip";
 
 const Header = () => {
   const { user, logOutUser } = use(AuthContext);
-  console.log(user);
+  // console.log(user);
 
   const handleLogOut = () => {
-    logOutUser()
-      .then(() => {
-        toast.success("User logged out successfully!");
-      })
-      .catch((error) => console.log(error.message));
+    logOutUser().then(() => {
+      toast.success("User logged out successfully!");
+    });
+    // .catch((error) => console.log(error.message));
   };
 
   return (

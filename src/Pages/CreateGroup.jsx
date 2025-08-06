@@ -28,7 +28,7 @@ const CreateGroup = () => {
     const form = e.target;
     const formData = new FormData(form);
     const groupData = Object.fromEntries(formData.entries());
-    console.log(groupData);
+    // console.log(groupData);
 
     fetch(`https://hobby-hub-server-lilac.vercel.app/groups`, {
       method: "POST",
@@ -47,7 +47,7 @@ const CreateGroup = () => {
             // navigate("/");
           });
         }
-        console.log("after added to db", data);
+        // console.log("after added to db", data);
         form.reset();
       });
   };

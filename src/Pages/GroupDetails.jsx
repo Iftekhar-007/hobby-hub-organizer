@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 
 const GroupDetails = () => {
   const groupData = useLoaderData();
-  console.log(groupData);
+  // console.log(groupData);
 
   useEffect(() => {
     // document.title = "Create Group | HobbyHub";
