@@ -95,7 +95,7 @@ bash
 npm run dev
 
 # Server
-npm start
+nodemon index.js
 
 ------
 
