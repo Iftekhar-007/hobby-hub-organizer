@@ -21,7 +21,7 @@ The platform fosters **real-world connections through shared passions**, helping
 
 
 ## 🖼️ Screenshot
-![HobbyHub Screenshot](https://i.ibb.co.com/84YkxXJc/screencapture-hobbyhub-client-a0bd0-web-app-2025-08-08-16-00-04.png)
+![HobbyHub Screenshot](https://ibb.co.com/NnTRN7XS.png)
 
 
 
