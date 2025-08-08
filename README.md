@@ -75,7 +75,7 @@ git clone <client-side-repo-link>
 git clone <server-side-repo-link>
 
 
-Navigate to each folder
+---
 
 navigate to each folder
 bash: 
@@ -86,7 +86,7 @@ cd server-folder
 install dependies : 
 npm install
 
--------
+---
 
 Run the development servers
 
