@@ -65,3 +65,46 @@ The platform fosters **real-world connections through shared passions**, helping
   "tailwindcss": "^4.1.7"
 }
 
+----
+How to run locally
+# Client side
+git clone <client-side-repo-link>
+
+# Server side
+git clone <server-side-repo-link>
+
+
+Navigate to each folder
+
+navigate to each folder
+bash: 
+cd client-folder
+cd server-folder
+
+---
+install dependies : 
+npm install
+
+-------
+
+Run the development servers
+
+bash
+# Client
+npm run dev
+
+# Server
+npm start
+
+------
+
+Open in Browser
+Visit: http://localhost:5173/ for the client side.
+
+Live Site Link : https://hobbyhub-client-a0bd0.web.app/
+
+client side git repo :  https://github.com/Programming-Hero-Web-Course4/b11a10-client-side-Iftekhar-007
+
+server side repo : https://github.com/Programming-Hero-Web-Course4/b11a10-server-side-Iftekhar-007
+
+
