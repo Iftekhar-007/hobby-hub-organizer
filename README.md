@@ -50,7 +50,7 @@ The platform fosters **real-world connections through shared passions**, helping
 
 ## 📦 Dependencies
 
-"dependencies": {
+dependencies: {
   "@tailwindcss/vite": "^4.1.7",
   "firebase": "^11.8.1",
   "lottie-react": "^2.4.1",
