@@ -20,7 +20,7 @@ The platform fosters **real-world connections through shared passions**, helping
 ---
 
 ## 🖼️ Screenshot
-![HobbyHub Screenshot]([screenshot.png](https://ibb.co.com/NnTRN7XS))  
+![HobbyHub Screenshot]([[screenshot.png](https://ibb.co.com/NnTRN7XS)](https://ibb.co.com/NnTRN7XS))  
 *(Replace `screenshot.png` with your actual image path)*
 
 ---
