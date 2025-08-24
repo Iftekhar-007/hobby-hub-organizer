@@ -23,7 +23,7 @@ const AllGroups = () => {
     setFavicon("../../public/ancestors.png"); // Put this file in your public folder
   }, []);
   return (
-    <div className="w-[1440px] mx-auto">
+    <div className="lg:w-[1440px] mx-auto">
       <h1 className="text-center text-5xl my-20 font-bold">All Groups Here</h1>
 
       {allGroups.map((group, index) => (

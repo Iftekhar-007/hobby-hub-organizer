@@ -75,7 +75,7 @@ const MyGroups = () => {
   // };
 
   return (
-    <div className="p-6 w-[1440px] mx-auto">
+    <div className="p-6 lg:w-[1440px] mx-auto">
       <h1 className="text-2xl font-bold mb-6 text-center">
         My Created Groups ({groups.length})
       </h1>

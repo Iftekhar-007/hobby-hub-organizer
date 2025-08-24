@@ -69,7 +69,7 @@ const CreateGroup = () => {
         <h1 className="text-center text-7xl font-bold my-10">Create Group</h1>
 
         <form onSubmit={handleCreateGroup}>
-          <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-[1440px] mx-auto border p-4 mb-20">
+          <fieldset className="fieldset bg-base-200 border-base-300 rounded-box lg:w-[1440px] mx-auto border p-4 mb-20">
             <label className="label">Group Title</label>
             <input
               type="text"
