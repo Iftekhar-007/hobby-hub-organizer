@@ -36,7 +36,7 @@ const Home = () => {
 
   return (
     <div className="">
-      <div className="flex justify-end p-4 w-[1440px] mx-auto">
+      <div className="flex justify-end p-4 lg:w-[1440px] mx-auto">
         <button className="btn btn-sm btn-outline" onClick={toggleTheme}>
           Switch to {theme === "light" ? "Dark" : "Light"} Mode
         </button>
